@@ -1,0 +1,81 @@
+set hlsearch
+set ignorecase
+set incsearch
+set so=6
+set relativenumber
+set number
+set surround
+set ideajoin
+set ideastatusicon=disabled
+
+set wrapscan
+set gdefault
+set history=10000
+set sidescrolloff=10
+set clipboard=unnamedplus,unnamed,ideaput
+
+set commentary
+
+" https://github.com/fdietze/dotfiles/blob/master/.ideavimrc
+
+let mapleader = " "
+
+nnoremap <leader>vv :e ~/.ideavimrc<CR>
+nnoremap <leader>vr :source ~/.ideavimrc<CR>
+
+" don't overwrite register when pasting over selection
+vnoremap p pgvy
+
+
+
+" IDEA SPECIFIC
+"
+nmap <leader>? :action GotoAction<CR>
+" change font size
+nmap + :action EditorIncreaseFontSize<CR>
+nmap - :action EditorDecreaseFontSize<CR>
+nmap <leader>= :action EditorResetFontSize<CR>
+
+" code navigation
+
+" https://youtrack.jetbrains.com/issue/VIM-44
+nnoremap <c-o> :action Back<cr>
+nnoremap <c-i> :action Forward<cr>
+
+nmap <leader>e :action GotoFile<CR>
+nmap <leader>s :action GotoSymbol<CR>
+nmap <leader>; :action FindInPath<CR>
+nmap <leader>a :action SearchEverywhere<CR>
+map <leader>k :action NewElement<CR>	
+nmap gr :action ShowUsages<CR>
+nmap gi :action GotoImplementation<CR>
+nmap gs :action GotoSuperMethod<CR>
+
+"nmap l :action NextTab<CR>
+"nmap L :action PreviousTab<CR>
+
+nmap <C-p> :action ParameterInfo<CR>
+imap <C-p> <C-o>:action ParameterInfo<CR>
+nmap <leader>n :action GotoNextError<CR>
+nmap <leader>N :action GotoPreviousError<CR>
+map gh <Action>(ShowErrorDescription)
+
+
+nmap <leader>ri :action Inline<CR>
+nmap <leader>rr :action RenameElement<CR>
+nmap <leader>rev :action IntroduceVariable<CR>
+vmap <leader>rev :action IntroduceVariable<CR>
+nmap <leader>rem :action ExtractMethod<CR>
+vmap <leader>rem :action ExtractMethod<CR>
+nmap <leader>rm :action Move<CR>
+nmap <leader>ro :action OptimizeImports<CR>
+nmap <leader>rG :action Generate<CR>
+
+nmap <leader>f  :action ReformatCode<CR>
+
+nmap <, :action MoveElementLeft<CR>
+nmap >, :action MoveElementRight<CR>
+
+nmap <leader>gr :action Vcs.RollbackChangedLines<CR>
+
+
