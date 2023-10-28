@@ -26,13 +26,13 @@ ZSH_THEME="eastwood"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="false"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
 # e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-#COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="false"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -132,6 +132,7 @@ plugins+=(zsh-vi-mode)
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
+alias lt='ls -lta'
 
 # bare git dir alias
 alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
@@ -148,3 +149,40 @@ source $ZSH/oh-my-zsh.sh
 bindkey '^ ' autosuggest-accept
 set -o vi
 bindkey -a -r ':'
+
+# bun completions
+[ -s "/home/zach/.bun/_bun" ] && source "/home/zach/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/zach/google-cloud-sdk/path.zsh.inc' ]; then . '/home/zach/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/zach/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/zach/google-cloud-sdk/completion.zsh.inc'; fi
+
+
+
+
+
+
+
+alias kubectl="minikube kubectl --"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/zach/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/zach/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/zach/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/zach/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
